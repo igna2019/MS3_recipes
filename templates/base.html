@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Recipes Base</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/>
+
+
+    </head>
+    <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="{{url_for('get_recipes')}}" class="brand-logo">Task Manager</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{{url_for('get_recipes')}}">Home</a></li>
+            <li><a href="{{url_for('add_recipe')}}">New Tasks</a></li>
+            
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="{{url_for('get_recipes')}}">Home</a></li>
+            <li><a href="{{url_for('add_recipe')}}">New Tasks</a></li>
+            
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+    
+        <h1>What is on the Menu today!</h1>
+        {% block content %}
+        {% endblock %}
+
+     </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+    $('select').formSelect();
+  });
+    </script>
+
+</html>

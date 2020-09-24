@@ -1,0 +1,119 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Add New Recipe</h3>
+
+<div class="row">
+  <form action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">poll</i>
+        <select id="category" name="recipe_cat">
+          <option value="" disabled selected>Choose Category Recipe</option>
+
+          {% for cat in categories %}
+          <option value="{{cat.recipe_cat}}">{{cat.recipe_cat}}</option>
+          {% endfor %}
+        </select>
+        <label>Recipe Category</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">restaurant_menu</i>
+        <input
+          id="recipe_name"
+          name="recipe_name"
+          type="text"
+          class="validate"
+        />
+        <label for="icon_prefix">Name </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="flavour" name="flavour" type="text" class="validate" />
+        <label for="icon_prefix">Brief Description</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="cooks_in" name="cooks_in" type="text" class="validate" />
+        <label for="icon_prefix"
+          >Cooking time</label
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="serves" name="serves" type="text" class="validate" />
+        <label for="icon_prefix"
+          >Serves for?</label
+        >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="dificulty" name="dificulty" type="text" class="validate" />
+        <label for="icon_prefix"
+          >Not Too Tricky, Easy or Tough</label
+        >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="recipe_tag" name="recipe_tag" type="text" class="validate" />
+        <label for="icon_prefix"
+          >Main Ingredientes</label
+        >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="method" name="method" type="text" class="validate" />
+        <label for="icon_prefix">Method</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input
+          id="ingredients"
+          name="ingredients"
+          type="text"
+          class="validate"
+        />
+        <label for="icon_prefix"
+          >List of Ingredients</label
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="url_image" name="url_image" type="text" class="validate" />
+        <label for="icon_prefix"
+          >Photo Link</label
+        >
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
