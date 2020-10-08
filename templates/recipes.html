@@ -1,36 +1,39 @@
+{% extends 'base.html' %} {% block content %}
 
-{% extends 'base.html' %} 
-{% block content %}
-   
-   <h2 class="section-main">What is on the Menu today!</h2>
-  
-  <div class="row section-cards">
+<h2 class="section-main">What is on the Menu today!</h2>
 
- 
-   {% for recipe in recipes %}
-<div class="col">
-
-
-<div class="card" style="width: 18rem;">
-<a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
-  <img class="card-img-top" src="{{recipe.url_image}}" alt="Card image cap">
-  </a>
-  <div class="card-body">
-    <h5 class="card-title text-wrapper">{{recipe.recipe_name}}</h5>
-    <p class="card-text">{{recipe.recipe_cat}}</p>
-  </div>
-  <ul class="list-group list-group-flush uppercase">
-    <li class="list-group-item text-wrapper">{{recipe.recipe_tag}}</li>
-    <li class="list-group-item">Cooking time {{recipe.cooks_in}} minutes</li>
-     </ul>
-  <div class="card-body">
-    <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="card-link">Recipe details</a>
+<div class="row section-cards">
+  {% for recipe in recipes %}
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
+        <img
+          class="card-img-top"
+          src="{{recipe.url_image}}"
+          alt="Card image cap"
+        />
+      </a>
+      <div class="card-body">
+        <h5 class="card-title text-wrapper">{{recipe.recipe_name}}</h5>
+        <p class="card-text">{{recipe.recipe_cat}}</p>
+      </div>
+      <ul class="list-group list-group-flush uppercase">
+        <li class="list-group-item text-wrapper">{{recipe.recipe_tag}}</li>
+        <li class="list-group-item">
+          Cooking time {{recipe.cooks_in}} minutes
+        </li>
+      </ul>
+      <div class="card-body">
+        <a
+          href="{{ url_for('recipe', recipe_id=recipe._id) }}"
+          class="card-link"
+          >Recipe details</a
+        >
+      </div>
     </div>
-</div>
-</div>
-
-    {% endfor %}
-
   </div>
+
+  {% endfor %}
+</div>
 
 {% endblock %}

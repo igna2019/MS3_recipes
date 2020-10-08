@@ -13,7 +13,6 @@
       <br />
       <p>{{ recipe.flavour}}</p>
 
-      
       <h5 class="section-one">Ingredients</h5>
       <ul>
         {% for ingredient in recipe.ingredients.split(",") %}
@@ -23,7 +22,7 @@
     </div>
 
     <div class="col-sm">
-      <h3 class="section-one"> <span>Method</span></h3>
+      <h3 class="section-one"><span>Method</span></h3>
       <p>{{ recipe.method }}</p>
     </div>
   </div>
