@@ -79,7 +79,6 @@ Requirements file includes the following packages:
 	pymongo==3.11.0
 	Werkzeug==1.0.1
 
-MongoDB user and password have not been hosted in Github.
 
 
 ## Potential and future features
