@@ -1,3 +1,83 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
+
+/*--------------------------------------Colours */
+
 body {
     background-color: #C6B4B0;
+}
+
+
+
+/*--------------------------------------Special paddigns/Margings/Text */
+
+
+
+.section-heading{
+    font-family: "Exo", sans-serif;
+    font-weight: 300;
+    margin-bottom: 25px; 
+       
+}
+
+.section-cards{
+    font-family: "Exo", sans-serif;
+    font-weight: 10;
+    margin-bottom: 15px;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+.section-main{
+
+    font-family: "Exo", sans-serif;
+    font-weight: 300;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.section-one{
+
+    font-family: "Exo", sans-serif;
+    font-weight: 300;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.section-heading{
+    font-family: "Exo", sans-serif;
+    font-weight: 300;
+    margin-bottom: 25px;   
+}
+
+.text-wrapper {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.logo {
+ margin-left: 10px;
+ margin-top:10px;
+ }
+
+ a:hover {
+     text-decoration: none;
+     color: rgb(61, 68, 61);
+ }
+/*--------------------------------------Buttons */
+
+.btn_small{
+    height: 24px;
+    width: 60px;
+    line-height: 24px;
+    margin: 5px 5px;
+    padding: 0 0.5px;
+}
+
+/*--------------------------------------image  */
+
+.image {
+    width: 600px;
+    height: 450px;
 }

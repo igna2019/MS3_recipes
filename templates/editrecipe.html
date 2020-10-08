@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add New Recipe</h3>
+<h3>Edit a Recipe</h3>
 
 <div class="row">
-  <form action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
+  <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="col s12">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">poll</i>
@@ -11,7 +11,11 @@
           <option value="" disabled selected>Choose Category Recipe</option>
 
           {% for cat in categories %}
-          <option value="{{cat.recipe_cat}}">{{cat.recipe_cat}}</option>
+            {% if cat.recipe_cat == recipe.recipe_cat %}
+                <option value="{{cat.recipe_cat}}" selected >{{cat.recipe_cat}}</option>
+            {% else %}
+                <option value="{{cat.recipe_cat}}">{{cat.recipe_cat}}</option>
+            {% endif %}
           {% endfor %}
         </select>
         <label>Recipe Category</label>
@@ -25,7 +29,7 @@
           id="recipe_name"
           name="recipe_name"
           type="text"
-          class="validate"
+          class="validate" value="{{recipe.recipe_name}}"
         />
         <label for="icon_prefix">Name </label>
       </div>
@@ -33,45 +37,53 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">menu</i>
-        <input id="flavour" name="flavour" type="text" class="validate" />
-        <label for="icon_prefix">Fancy Descripti</label>
+        <input id="flavour" name="flavour" type="text" class="validate" value="{{recipe.flavour}}"/>
+        <label for="icon_prefix">Brief Description</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">menu</i>
-        <input id="cooks_in" name="cooks_in" type="text" class="validate" />
-        <label for="icon_prefix">Cooking time - in minutes</label>
+        <input id="cooks_in" name="cooks_in" type="text" class="validate" value="{{recipe.cooks_in}}" />
+        <label for="icon_prefix"
+          >Cooking time</label
+        >
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">menu</i>
-        <input id="serves" name="serves" type="text" class="validate" />
-        <label for="icon_prefix">Serves for?</label>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">menu</i>
-        <input id="dificulty" name="dificulty" type="text" class="validate" />
-        <label for="icon_prefix">Not Too Tricky, Easy or Tough</label>
+        <input id="serves" name="serves" type="text" class="validate" value="{{recipe.serves}}"  />
+        <label for="icon_prefix"
+          >Serves for?</label
+        >
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">menu</i>
-        <input id="recipe_tag" name="recipe_tag" type="text" class="validate" />
-        <label for="icon_prefix">Core of the recipe</label>
+        <input id="dificulty" name="dificulty" type="text" class="validate" value="{{recipe.dificulty}}" />
+        <label for="icon_prefix"
+          >Not Too Tricky, Easy or Tough</label
+        >
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">menu</i>
-        <input id="method" name="method" type="text" class="validate" />
+        <input id="recipe_tag" name="recipe_tag" type="text" class="validate" value="{{recipe.recipe_tag}}" />
+        <label for="icon_prefix"
+          >Main Ingredientes</label
+        >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">menu</i>
+        <input id="method" name="method" type="text" class="validate" value="{{recipe.method}}" />
         <label for="icon_prefix">Method</label>
       </div>
     </div>
@@ -83,22 +95,26 @@
           id="ingredients"
           name="ingredients"
           type="text"
-          class="validate"
+          class="validate" value="{{recipe.ingredients}}"
         />
-        <label for="icon_prefix">List of Ingredients</label>
+        <label for="icon_prefix"
+          >List of Ingredients</label
+        >
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">menu</i>
-        <input id="url_image" name="url_image" type="text" class="validate" />
-        <label for="icon_prefix">Photo Link</label>
+        <input id="url_image" name="url_image" type="text" class="validate"  value="{{recipe.url_image}}"/>
+        <label for="icon_prefix"
+          >Photo Link</label
+        >
       </div>
     </div>
     <div class="row">
-      <button class="btn waves-effect waves-light btn_small blue" type="submit" name="action">
-        Submit
-        <i class="material-icons right">send</i>
+      <button class="btn waves-effect waves-light btn btn-small green" type="submit" name="action">
+        Confirm changes
+        <i class="material-icons right">playlist_add</i>
       </button>
     </div>
   </form>

@@ -20,13 +20,13 @@ mongo = PyMongo(app)
 def get_recipes():
     return render_template('recipes.html', recipes=mongo.db.recipes.find())
 
-#Function Select option into Recipe categories
+# Function Select option into Recipe categories
 
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html', categories=mongo.db.recipes_categories.find())
 
-#Function insert to add the dictionary into mongoDb.
+# Function insert to add the dictionary into mongoDb.
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -38,9 +38,41 @@ def insert_recipe():
 @app.route('/recipe/<recipe_id>')
 # Take the ObjectID and display the information for the recipe
 def recipe(recipe_id):
-    the_recipe = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('recipe_one.html', recipe=the_recipe,
-                           title=the_recipe['recipe_name'])
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('recipe.html', recipe=the_recipe)
+
+# Take the ObjectID open edit recipe form
+
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_categories = mongo.db.recipes_categories.find()
+    return render_template('editrecipe.html', recipe=the_recipe, categories=all_categories)
+
+
+@app.route('/update_recipe/<recipe_id>' , methods=['POST'])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update( {'_id': ObjectId(recipe_id)},
+    {
+        'recipe_name':request.form.get('recipe_name'),
+        'recipe_cat':request.form.get('recipe_cat'),
+        'cooks_in':request.form.get('cooks_in'),
+        'flavour':request.form.get('flavour'),
+        'dificulty':request.form.get('dificulty'),
+        'ingredients':request.form.get('ingredients'),
+        'recipe_tag':request.form.get('recipe_tag'),
+        'method':request.form.get('method'),
+        'url_image':request.form.get('url_image')
+    })
+    return redirect(url_for('get_recipes'))
+
+# Take the ObjectID and delete recipe option
+
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('get_recipes'))
 
 
 if __name__=='__main__':
